@@ -1,4 +1,4 @@
-# ****主 RL 与 TTRL 的区别，以及“大模型基座 + 价值头”的复现分析
+# 主 RL 与 TTRL 的区别，以及“大模型基座 + 价值头”的复现分析
 
 参考：T. Hubert et al., "Olympiad-level formal mathematical reasoning with reinforcement learning", Nature (2025)。本文承接第 5、6 篇的记号：先把 AlphaProof 的主 RL 与 TTRL 放在同一个数学框架里逐项对照，再分析一条开源复现路线——**策略网络直接取一个大模型作为基座，在它上面训练价值头**。
 
@@ -164,7 +164,7 @@ $$
 
 ### 1.3 为什么 TTRL 有效：理论视角
 
-**同一改进算子，不同测度.** 两者都在执行专家迭代：搜索定义改****进策略 $\pi_B$，训练把 $\pi_\theta$ 拉向成功轨迹的分布。差别只在数据分布的测度：主 RL 的测度是 $\mathcal{D}_{\text{start}}$ 上的均匀（按有趣度重加权），TTRL 的测度集中在 $T$ 的邻域。用性能差引理看，每次成功搜索带来的改进量为
+**同一改进算子，不同测度.** 两者都在执行专家迭代：搜索定义改进策略 $\pi_B$，训练把 $\pi_\theta$ 拉向成功轨迹的分布。差别只在数据分布的测度：主 RL 的测度是 $\mathcal{D}_{\text{start}}$ 上的均匀（按有趣度重加权），TTRL 的测度集中在 $T$ 的邻域。用性能差引理看，每次成功搜索带来的改进量为
 
 $$
 J(\pi')-J(\pi)=\frac{1}{1-\gamma}\,\mathbb{E}_{s\sim d^{\pi'}}\Big[\sum_a\pi'(a\mid s)A^{\pi}(s,a)\Big],
